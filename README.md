@@ -6,9 +6,9 @@ A JSON dataset of 348 colour combinations (of 2, 3, and 4 colours) of 159 unique
 
 ### Source
 
-The data here has originally been compiled and open sourced by **Dain M. Blodorn Kim** (@dblodorn) for his interactive web version ([dblodorn/sanzo-wada](https://github.com/dblodorn/sanzo-wada/)). In this fork, I've fixed some incorrect data from the original, used a more perceptual CMYK to RGB conversion, and encapsulated the dataset as a standalone and distributed project.
+The data here has originally been compiled and open sourced by **Dain M. Blodorn Kim** (@dblodorn) for his interactive web version ([dblodorn/sanzo-wada](https://github.com/dblodorn/sanzo-wada/)). **Matt DesLauriers** (@mattdesl) then fixed some incorrect data from the original, used a more perceptual CMYK to RGB conversion, and encapsulated the dataset as a standalone and distributed project ([mattdesl/dictionary-of-colour-combinations](https://github.com/mattdesl/dictionary-of-colour-combinations)).
 
-This repository is a fork of [mattdesl/dictionary-of-colour-combinations](https://github.com/mattdesl/dictionary-of-colour-combinations) that adds files aimed at software projects, all derived from `colors.json`: ready-made palettes, WCAG contrast data, objective colour tags, CSS custom properties, design tokens and TypeScript types. `colors.json` itself is unchanged.
+This repository is a fork of that project which adds files aimed at software projects, all derived from `colors.json`: ready-made palettes, WCAG contrast data, objective colour tags, CSS custom properties, design tokens and TypeScript types. `colors.json` itself is unchanged, so existing code keeps working.
 
 ### Data
 
@@ -31,7 +31,7 @@ In the book, each unique colour has:
 - A name such as "Burnt Sienna" or "Rosolanc Purple"
 - Combinations: which palette(s) this colour is associated with (identifiers from 1 to 348)
 - CMYK values in `C% / M% / Y% / K%` from 0 to 100
-- Which swatch book the colour is associated with (the 159 colours are split into 6 chapters)
+- Which swatch book the colour is associated with (the 159 colours are split into 6 chapters, `swatch` 0 – 5)
 
 The colours are already sorted by the author in a fairly pleasing way, and the data here maintains that order.
 
@@ -129,7 +129,7 @@ const { hex, textColor } = meta.find(m => m.slug === 'burnt-sienna');
 const coolLights = meta.filter(m => m.tags.includes('cool') && m.tags.includes('light'));
 ```
 
-CSS:
+CSS (with a bundler that resolves package imports, e.g. Vite or webpack):
 
 ```css
 @import 'dictionary-of-colour-combinations/colors.css';
@@ -155,7 +155,7 @@ npm run build   # regenerate the derived files from colors.json
 npm test        # validate the data and check the derived files are up to date
 ```
 
-If you regenerate `colors.json` (see below), run `npm run build` afterwards.
+If you regenerate `colors.json` (see [Converting from Source](#converting-from-source)), run `npm run build` afterwards.
 
 > Note: the package name in `package.json` is the same as the upstream npm package, so it must be renamed (e.g. scoped) before publishing this fork to npm.
 
@@ -170,7 +170,7 @@ In this fork of the data, each CMYK value is converted to RGB using specific col
 
 (Converted with Relative Colorimetric and Black Point Compensation)
 
-These conversions provides the `rgb`, `lab` (L\*a\*b\* with D50 illuminant) and `hex` fields in the JSON data.
+These conversions provide the `rgb`, `lab` (L\*a\*b\* with D50 illuminant) and `hex` fields in the JSON data.
 
 There may still be some differences to the book's printed swatches, as the conversion is not exact.
 
@@ -182,10 +182,11 @@ If you wish to convert the CMYK values to RGB/LAB/HEX with different colour prof
 pip3 install -r requirements.txt
 ```
 
-Then, change the profile files in `augment_sanzo.py` and run the script:
+Then, change the profile files in `src/augment_sanzo.py` and run the script:
 
 ```sh
 python3 src/augment_sanzo.py
+npm run build
 ```
 
 ## License
