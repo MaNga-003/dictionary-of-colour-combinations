@@ -5,7 +5,7 @@ import os
 
 dirname = os.path.dirname(os.path.abspath(__file__))
 
-iccCMYK = os.path.join(dirname, 'data', 'icc', 'cmyk', 'U.S. Web Coated (SWOP) v2.icc')
+iccCMYK = os.path.join(dirname, 'data', 'icc', 'CMYK', 'U.S. Web Coated (SWOP) v2.icc')
 iccRGB = os.path.join(dirname, 'data', 'icc', 'RGB', 'sRGB IEC61966-2.1.icc')
 intent = icc.RELATIVE_COLORIMETRIC
 
