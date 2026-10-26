@@ -1,17 +1,25 @@
 {
   "name": "dictionary-of-colour-combinations",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "palettes from A Dictionary of Colour Combinations",
   "main": "./colors.json",
+  "types": "index.d.ts",
   "license": "MIT",
   "author": {
-    "name": "Matt DesLauriers",
-    "email": "dave.des@gmail.com",
-    "url": "https://github.com/mattdesl"
+    "name": "Burak Sişci",
+    "url": "https://github.com/MaNga-003"
   },
+  "contributors": [
+    {
+      "name": "Matt DesLauriers",
+      "email": "dave.des@gmail.com",
+      "url": "https://github.com/mattdesl"
+    }
+  ],
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
+    "build": "node src/build.js",
     "test": "node test.js"
   },
   "keywords": [
@@ -20,14 +28,18 @@
     "colour",
     "colors",
     "scheme",
-    "schemes"
+    "schemes",
+    "wcag",
+    "contrast",
+    "design-tokens",
+    "css-variables"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/mattdesl/dictionary-of-colour-combinations.git"
+    "url": "git+https://github.com/MaNga-003/dictionary-of-colour-combinations.git"
   },
-  "homepage": "https://github.com/mattdesl/dictionary-of-colour-combinations",
+  "homepage": "https://github.com/MaNga-003/dictionary-of-colour-combinations",
   "bugs": {
-    "url": "https://github.com/mattdesl/dictionary-of-colour-combinations/issues"
+    "url": "https://github.com/MaNga-003/dictionary-of-colour-combinations/issues"
   }
 }
